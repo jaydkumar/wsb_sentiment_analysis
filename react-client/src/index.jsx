@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactWordcloud from 'react-wordcloud';
+import SimpleWordCloud from './wordcloudTest.jsx';
+
+import "regenerator-runtime/runtime";
 
 const snoowrap = require('snoowrap');
-import WordCloud  from 'wordcloud';
 
 async function scrapeSubreddit(key) {
   const r = new snoowrap({
@@ -72,10 +75,9 @@ async function scrapeSubreddit(key) {
 
   var wordList = [];
   for (var keys in summary[0].wordCount) {
-    wordList.push([keys, summary[0].wordCount[keys]]);
+    wordList.push([{text: keys, value: summary[0].wordCount[keys]}]);
   }
   var list = [['foo', 12], ['bar', 6]];
-  WordCloud(document.getElementById('wordcloud'), { list: list } );
 
 };
 
@@ -108,14 +110,18 @@ class App extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Reddit Thread:
-          <input type="text" value={this.state.threadURL} onChange={this.handleChange} />
-        </label>
-        <div></div>
-        <input type="submit" value="Scrape" />
-      </form>
+      <>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Reddit Thread:
+            <input type="text" value={this.state.threadURL} onChange={this.handleChange} />
+          </label>
+          <div></div>
+          <input type="submit" value="Scrape" />
+        </form>
+
+        <SimpleWordCloud />
+      </>
     );
   }
 }
