@@ -28,6 +28,7 @@
     "react-dom": "^16.12.0",
     "react-wordcloud": "^1.2.7",
     "regenerator-runtime": "^0.13.7",
-    "snoowrap": "^1.22.0"
+    "snoowrap": "^1.22.0",
+    "styled-components": "^5.2.1"
   }
 }
