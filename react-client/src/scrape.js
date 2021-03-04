@@ -1,11 +1,12 @@
 const snoowrap = require('snoowrap');
+import redditAPIconn from '../../config.js';
 
 async function scrapeSubreddit(key) {
   const r = new snoowrap({
-    userAgent: 'dasp33',
-    clientId: '5NclHjbLqNW15A',
-    clientSecret: 'AdXLM09Bi3T_O_GutkARixh-wKK1CA',
-    refreshToken: '807457195744-U7LoJFGI93PkZSZQ4cMkkQWM0uNXzA'
+    userAgent: redditAPIconn.userAgent,
+    clientId: redditAPIconn.clientId,
+    clientSecret: redditAPIconn.clientSecret,
+    refreshToken: redditAPIconn.refreshToken
   });
 
   const comments = await r.getSubmission(key).comments.fetchAll();
